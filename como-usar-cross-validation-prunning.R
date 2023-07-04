@@ -1,3 +1,14 @@
+# Instale e carregue o pacote mlbench
+install.packages("mlbench")
+library(mlbench)
+library(rpart)
+
+# Carregue a base de dados PimaIndiansDiabetes
+data(PimaIndiansDiabetes)
+
+# Verifique a estrutura da base de dados
+str(PimaIndiansDiabetes)
+
 # Carregue o conjunto de dados Pima Indians Diabetes
 data(PimaIndiansDiabetes)
 
