@@ -23,8 +23,11 @@ modelo <- rpart(diabetes ~ ., data = dados_treinamento, method = "class")
 previsoes <- predict(modelo, dados_teste, type = "class")
 #previsoes2 <- predict(modelo, dados_teste) #se não colocar o class ele traz a probabilidade de sim e não em valores
 
+# Obtenha os rótulos verdadeiros do conjunto de teste
+rotulos <- dados_teste$diabetes
+
 # Calcule a matriz de confusão
-confusion_matrix <- table(previsoes, dados_teste$diabetes)
+confusion_matrix <- table(previsoes, rotulos)
 
 # Calcule a acurácia #Acurácia: (TP + TN) / (TP + FP + FN + TN)
 accuracy <- (confusion_matrix[1, 1] / sum(confusion_matrix[2, 2])) / nrow(dados_teste)
@@ -56,3 +59,7 @@ plot(roc_obj, main = "Curva ROC", xlab = "Taxa de Falsos Positivos", ylab = "Tax
      print.auc = TRUE, print.auc.x = 0.5, print.auc.y = 0.3,
      auc.polygon = TRUE, max.auc.polygon = TRUE, grid = TRUE,
      col = "blue", lwd = 2)
+
+
+
+
